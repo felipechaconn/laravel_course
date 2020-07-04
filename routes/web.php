@@ -31,3 +31,23 @@ Route::get('/text', function () {
 Route::get('/json', function () {
     return ['foo'=> 'bar'];
 });
+
+/*
+Pasando parametros
+http://pizzalaravel.com/param?key=felipe
+*/
+Route::get('param', function () {
+    $name = request('key');
+    return $name;
+});
+
+/*
+Pasando parametro y usandolos en el blade (Probar con las dos url)
+http://pizzalaravel.com/param2?name=FelipeChacon
+http://pizzalaravel.com/param2?name=<script>alert('FelipeChacon')</script>
+*/
+Route::get('param2', function () {
+    return view('test',[
+        'name'=> request('name'),
+    ]);
+});

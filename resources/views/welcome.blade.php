@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                   Felipe Chaconn
+                   Felipe Chacón Navarro
                 </div>
 
                 <div class="links">
