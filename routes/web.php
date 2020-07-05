@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 //Aqui cambiamos la ruta y el view
 Route::get('test', function () {
-    return view('test');
+    return view('params');
 });
 
 //Aqui retornamos en ves de una vista un texto
@@ -31,6 +31,8 @@ Route::get('/text', function () {
 Route::get('/json', function () {
     return ['foo'=> 'bar'];
 });
+
+
 
 /*
 Pasando parametros
@@ -47,7 +49,42 @@ http://pizzalaravel.com/param2?name=FelipeChacon
 http://pizzalaravel.com/param2?name=<script>alert('FelipeChacon')</script>
 */
 Route::get('param2', function () {
-    return view('test',[
+    return view('params',[
         'name'=> request('name'),
+    ]);
+});
+
+
+/**
+ * Wildcards
+ * Podemos pasarle cualquier valor como paramertro
+ * http://pizzalaravel.com/posts/ABC12312312
+ */
+Route::get('/posts/{wildcard}', function ($wildcard) {
+    return $wildcard;
+});
+
+/**
+ * Wildcard
+ * Usandolo en el blade
+ * http://pizzalaravel.com/posts/my-first-wildcard
+ * http://pizzalaravel.com/posts/my-second-wildcard
+ */
+Route::get('/posts/{wildcard}', function ($wildcard) {
+    $wildcards = [
+        ##estos serian los parametros si colocamos otro parametro se cae, pero se puede manejar con el default
+        'my-first-wildcard'=> 'hello this is my first wildcard post!',
+        'my-second-wildcard'=> 'Im learning'
+    ];
+
+    ##Este if es para retornaer un 404 en caso de pasar otro wildcard
+    if(! array_key_exists($wildcard,$wildcards)) {
+        abort(404,'Ups that post not found');
+    }
+
+    return view('wildcards',[
+        'wildcard'=> $wildcards[$wildcard]
+       ## se puede validar un default asi tambien en vez del if 'wildcard'=> $wildcards[$wildcard] ?? 'Este seria el default'
+
     ]);
 });

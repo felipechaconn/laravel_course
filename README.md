@@ -13,7 +13,7 @@ eval `ssh-agent -s`
 <h2 align="center">ROUTING</h2>
 
 
-### Basic Routing
+## Basic Routing
 <p>The most basic Laravel routes accept a URI and a Closure</br>providing a very simple and expressive method of defining routes:
 </p>
 
@@ -35,11 +35,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 ```
-### Routing Params 
+## Routing Params 
 
 You can redirect or route with params.
 
-The 'key' is the word that you use in QueryString like: http://pizzalaravel.com/param?key=felipe
+The 'key' is the word that you use in QueryString like: http://pizzalaravel.com/param?key=felipe ,you'd need pass the word 'KEY' then set = and then set the param you would like 
 
 ```php
 Route::get('param', function () {
@@ -56,4 +56,44 @@ Route::get('param2', function () {
         'name'=> request('name'),
     ]);
 });
+```
+
+## Routing Wildcards
+
+Wildcard is like a param, you can pass  values without specify the key
+
+Check te url http://pizzalaravel.com/posts/ABC12312312
+
+```php
+Route::get('/posts/{wildcard}', function ($wildcard) {
+    return $wildcard;
+});
+
+```
+
+These type of wildcard permits you to set the variables and results you would like check the url 
+
+Plus, you can check the if, the if validate if params exists in array, if not show 404 message.
+
+Check the urls http://pizzalaravel.com/posts/my-first-wildcard and http://pizzalaravel.com/posts/my-second-wildcard
+
+```php
+Route::get('/posts/{wildcard}', function ($wildcard) {
+    $wildcards = [
+      
+        'my-first-wildcard'=> 'hello this is my first wildcard post!',
+        'my-second-wildcard'=> 'Im learning'
+    ];
+
+   
+    if(! array_key_exists($wildcard,$wildcards)) {
+        abort(404,'Ups that post not found');
+    }
+
+    return view('wildcards',[
+        'wildcard'=> $wildcards[$wildcard]
+    
+    ]);
+});
+
 ```
