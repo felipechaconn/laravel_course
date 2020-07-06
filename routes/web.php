@@ -88,3 +88,10 @@ Route::get('/posts/{wildcard}', function ($wildcard) {
 
     ]);
 });
+
+
+/**
+ * Route to controller
+ * ES LA MEJOR MANERA DE ENRUTAR, ya que las rutas no tienen que tener logica de negocio
+ */
+Route::get('/firstController/{post}','firstController@show');

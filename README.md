@@ -97,3 +97,18 @@ Route::get('/posts/{wildcard}', function ($wildcard) {
 });
 
 ```
+
+## Routing to controllers
+
+This is the best way to manage routes, we have to link the route with controller
+like this:
+@show is the functios inside firstController
+```php
+Route::get('/firstController/{post}','firstController@show');
+```
+
+We can create the controller with this command 
+
+```bash
+ php artisan make:controller firstController
+```
