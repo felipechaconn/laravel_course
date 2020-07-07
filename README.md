@@ -175,3 +175,9 @@ We can create the controller with this command
    ```bash
         php artisan migrate
     ```
+
+<h2 align="center">Views</h2>
+
+## Layout pages
+You can manage view with layouts, you have only one file with the name 
+layout,  then you can add dynamic content, with helpers like @yields
