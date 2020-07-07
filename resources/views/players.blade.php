@@ -7,6 +7,6 @@
 </head>
 <body>
    <h1>My first consult</h1> 
-   <p>His soccer Team is {{$post->soccerTeam}}</p>
+   <p>His soccer Team is {{$player->soccerTeam}}</p>
 </body>
 </html>

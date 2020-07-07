@@ -155,3 +155,23 @@ We can create the controller with this command
 
 ## Hello Eloquent
 
+1. Create Model
+    ```bash
+        php artisan make:model Player   
+    ```
+2. In controller with Eloquent looks like :
+   ```php
+      return view('players',[
+        'player'=> Player::where('name',$name)->firstOrFail()
+    ]);
+   ```
+## Migrations 101
+
+1. To create migration you have to use this command
+    ```bash
+        php artisan make:migration create_players_table
+    ```
+2. Execute the migration:
+   ```bash
+        php artisan migrate
+    ```

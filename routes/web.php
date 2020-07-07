@@ -101,4 +101,11 @@ Route::get('/firstController/{post}','firstController@show');
  * Database testing
  * http://pizzalaravel.com/testDB/SergioRamos
  */
-Route::get('/testDB/{name}','laravelFromScratch@showDataDB');
+Route::get('/testdb/{name}','laravelFromScratch@showDataDB');
+
+/**
+ * Route to controller
+ * Database testing with eloquent
+ * http://pizzalaravel.com/testDB/SergioRamos
+ */
+Route::get('/testEloquent/{name}','laravelFromScratch@showDataDBWithEloquent');
