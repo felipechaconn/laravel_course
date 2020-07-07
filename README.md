@@ -112,3 +112,46 @@ We can create the controller with this command
 ```bash
  php artisan make:controller firstController
 ```
+
+<h2 align="center">Database</h2>
+
+## Configuration
+
+1. You need to configurate db credentials in .env and select what type of BD you would like to use
+   ```.env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=laravelFromScratch
+    DB_USERNAME=felipechaconn
+    DB_PASSWORD=Admin
+
+   ```
+2. Execute commands to inside into mysql 
+   ```bash
+    mysql -u felipechaconn -p
+    ```
+3. Create Database
+    ```bash
+    create database laravelFromScratch;
+    ```
+4. Check the connection in db managment(workbench mysql)
+    Reference-style: 
+    ![alt text][logo]
+    [logo]:../imagesMarkDown/WorkbenchConfig.png "Logo Title Text 2"
+5. Insert Data in DB.
+6. In Controller  you will need to do something like that to consult db:
+    ```php
+        $post= \DB::table('posts')->where('name',$name)->first();
+        dd($post);
+    ```
+8. In blade you could recive data like this:
+```html
+ <h1>My first consult</h1> 
+   <p>His soccer Team is {{$post->soccerTeam}}</p>
+```
+1. Check the data in explorer http://pizzalaravel.com/testDB/SergioRamos;
+
+
+## Hello Eloquent
+
