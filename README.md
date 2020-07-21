@@ -229,3 +229,20 @@ this is the method inside layout blade:
     @yield('content')  
 </body>
 ```
+
+<h2 align="center">Forms</h2>
+
+## Creating controllers with seven restfull actions
+
+You will create a lot of actions with commands make:controller, for example in this case we will going to create
+the seven actions restful with this command:
+
+```bash
+php artisan make:controller ProjectsController -r 
+```
+
+If you want to create controller and model in the same time use this command:
+
+```bash
+php artisan make:controller ProjectsController -r -m Project
+```
