@@ -43,7 +43,7 @@ Route::get('/', function () {
 
 You can redirect or route with params.
 
-The 'key' is the word that you use in QueryString like: http://pizzalaravel.com/param?key=felipe ,you'd need pass the word 'KEY' then set = and then set the param you would like
+The 'key' is the word that you use in QueryString like: 'http://pizzalaavel.com/param?key=felipe' ,you'd need pass the word 'KEY' then set = and then set the param you would like
 
 ```php
 Route::get('param', function () {
@@ -66,7 +66,7 @@ Route::get('param2', function () {
 
 Wildcard is like a param, you can pass values without specify the key
 
-Check te url http://pizzalaravel.com/posts/ABC12312312
+Check te url 'http://pizzalaravel.com/posts/ABC12312312'
 
 ```php
 Route::get('/posts/{wildcard}', function ($wildcard) {
@@ -79,7 +79,7 @@ These type of wildcard permits you to set the variables and results you would li
 
 Plus, you can check the if, the if validate if params exists in array, if not show 404 message.
 
-Check the urls http://pizzalaravel.com/posts/my-first-wildcard and http://pizzalaravel.com/posts/my-second-wildcard
+Check the urls 'http://pizzalaravel.com/posts/my-first-wildcard' and 'http://pizzalaravel.com/posts/my-second-wildcard'
 
 ```php
 Route::get('/posts/{wildcard}', function ($wildcard) {
@@ -135,23 +135,29 @@ We can create the controller with this command
     ```
 
 2. Execute commands to inside into mysql
+
     ```bash
      mysql -u felipechaconn -p
     ```
+
 3. Create Database
+
     ```bash
     create database laravelFromScratch;
     ```
+
 4. Check the connection in db managment(workbench mysql)
    Reference-style:
    ![alt text][logo]
    [logo]:../imagesMarkDown/WorkbenchConfig.png "Logo Title Text 2"
 5. Insert Data in DB.
 6. In Controller you will need to do something like that to consult db:
+
     ```php
         $post= \DB::table('posts')->where('name',$name)->first();
         dd($post);
     ```
+
 7. In blade you could recive data like this:
 
 ```html
@@ -159,15 +165,18 @@ We can create the controller with this command
 <p>His soccer Team is {{$post->soccerTeam}}</p>
 ```
 
-1. Check the data in explorer http://pizzalaravel.com/testDB/SergioRamos;
+1. Check the data in explorer 'http://pizzalaravel.com/testDB/SergioRamos';
 
 ## Hello Eloquent
 
 1. Create Model
+
     ```bash
         php artisan make:model Player
     ```
+
 2. In controller with Eloquent looks like :
+
     ```php
        return view('players',[
          'player'=> Player::where('name',$name)->firstOrFail()
@@ -177,10 +186,13 @@ We can create the controller with this command
 ## Migrations 101
 
 1. To create migration you have to use this command
+
     ```bash
         php artisan make:migration create_players_table
     ```
+
 2. Execute the migration:
+
     ```bash
          php artisan migrate
     ```
@@ -190,4 +202,30 @@ We can create the controller with this command
 ## Layout pages
 
 You can manage view with layouts, you have only one file with the name
-layout, then you can add dynamic content, with helpers like @yields
+layout, then you can add dynamic content, with helpers like @yields inside the base or layouts,
+ @includes and  @section to specify the parts
+
+this is the method inside home blade:
+
+```php
+@extends('layout')
+@section('content')
+<div class="flex-center position-ref full-height">
+    <div class="content">
+        <div class="title m-b-md">
+          Welcome to home page
+        </div>
+    </div>
+</div>
+@endsection
+```
+
+this is the method inside layout blade:
+
+```php
+<body>
+    <h1>Testing Yields</h1>
+    @yield('header')
+    @yield('content')  
+</body>
+```
