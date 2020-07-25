@@ -109,3 +109,16 @@ Route::get('/testdb/{name}','laravelFromScratch@showDataDB');
  * http://pizzalaravel.com/testDB/SergioRamos
  */
 Route::get('/testEloquent/{name}','laravelFromScratch@showDataDBWithEloquent');
+
+//Routes to layout 
+Route::get('/about',function(){
+    return view('welcome');
+});
+
+Route::get('/about',function(){
+    return view('about');
+});
+
+
+//REST 
+

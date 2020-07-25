@@ -238,11 +238,53 @@ You will create a lot of actions with commands make:controller, for example in t
 the seven actions restful with this command:
 
 ```bash
-php artisan make:controller ProjectsController -r 
+php artisan make:controller ProjectsController -r
 ```
 
 If you want to create controller and model in the same time use this command:
 
 ```bash
 php artisan make:controller ProjectsController -r -m Project
+```
+
+## Restful Routing
+
+```php
+//List of articles
+Route::get('/articles','ArticlesController@index');
+//One Article
+Route::get('/articles/{id}','ArticlesController@show');
+
+//Save 
+
+//Edit Article
+Route::put('/articles/{id}','ArticlesController@edit');
+
+//delete Article
+Route::delete('/articles/{id}','ArticlesController@delete');
+
+```
+
+## Form structure
+
+```HTML
+<form method="HTTP Method" action='/article'>
+<!--CSRF is a protection to cross-site request forgery  (are a type of malicious exploit whereby unauthorized commands are performed on behalf of an authenticated user.)-->
+@csrf
+@method('Put')
+</form>
+```
+
+## Form Validation  Escentioals
+
+We can validate data inside controller like these 
+
+```php
+public function store() {
+    request()-> validate([
+        'data1'=> ['required','min:3','max:355'],
+        'data2'=> 'required',
+    ])
+}
+
 ```
