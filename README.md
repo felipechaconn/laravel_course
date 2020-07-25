@@ -102,6 +102,22 @@ Route::get('/posts/{wildcard}', function ($wildcard) {
 
 ```
 
+## Routing Names
+
+Named routes allow you to translate a URI into a variable. This way, if a route changes at some point down the road, all of your links will automatically update, due to the fact that they're referencing the named version of the route rather than the hardcoded path
+We can add names to our routes like this:
+
+```php
+Route::get('articles/{article}', 'ArticlesController@show')->name('articles.show');
+
+```
+
+And we can reference the route with :
+
+```html
+<a href="{{route('articles.show', $article)}}">
+```
+
 ## Routing to controllers
 
 This is the best way to manage routes, we have to link the route with controller

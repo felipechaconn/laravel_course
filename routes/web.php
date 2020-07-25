@@ -89,6 +89,10 @@ Route::get('/posts/{wildcard}', function ($wildcard) {
     ]);
 });
 
+/**
+ * Route with name
+ */
+Route::get('articles/{article}', 'ArticlesController@show')->name('articles.show');
 
 /**
  * Route to controller
